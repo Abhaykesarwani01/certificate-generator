@@ -1277,7 +1277,7 @@ function generateCertificate(teamID, memberName) {
 
      // Set font style, size, and color
      doc.setFont('helvetica','Bold'); // Font: helvetica, Style: bold
-     doc.setFontSize(24); // Set font size to 24
+     doc.setFontSize(30); // Set font size to 24
      doc.setTextColor(0, 0, 0); // Set text color to blue (RGB)
 
      // Center the text horizontally
