@@ -1240,7 +1240,7 @@ function displayTeamData(team) {
 
       // Add Certificate button
       const certButtonCell = document.createElement('td');
-      certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}')">Download Certificate</button>`;
+      certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}','${team.teamName}')">Download Certificate</button>`;
       row.appendChild(certButtonCell);
 
       // Append the row to the table body
@@ -1248,7 +1248,7 @@ function displayTeamData(team) {
   });
 }
 
-function generateCertificate(teamID, memberName) {
+function generateCertificate(teamID, memberName , teamName ) {
     document.getElementById(memberName).innerHTML="Generating Certificate....";
 
   const { jsPDF } = window.jspdf;
@@ -1284,7 +1284,7 @@ function generateCertificate(teamID, memberName) {
 
      // Center the text horizontally
     const teamIDText = `${teamID}`;
-    const memberNameText = `${memberName}`;
+    const memberNameText = `${memberName} (${teamName})`;
 
     const teamIDTextWidth = doc.getTextWidth(teamIDText);
     const memberNameTextWidth = doc.getTextWidth(memberNameText);
@@ -1303,5 +1303,3 @@ function generateCertificate(teamID, memberName) {
     document.getElementById(memberName).innerHTML="Download Certificate";
   };
 }
-
-
