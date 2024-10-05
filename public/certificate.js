@@ -1129,10 +1129,10 @@ let teamsData = [
         "MembersName": ["Yash Tripathi", "Pratham Chaudhary", "Aditi Sahu", "Nisha Bhartiya", "Sanskar Kesarwani"]
     },
     {
-        "teamID": "UHK03267",
+        "teamID": "UHK03278",
         "teamName": "Team Angaar",
         "leaderName": "Naman Sharma",
-        "MembersName": ["Naman Sharma", "Yash Sharma", "Divyanshu Khandelwal", "Ananya Baghel"]
+        "MembersName": ["Naman Sharma", "Yash Sharma", "Divyanshu Khandelwal", "Ananya Baghel","Parul Singh"]
     },
     {
         "teamID": "UHK03267",
@@ -1240,7 +1240,7 @@ function displayTeamData(team) {
 
       // Add Certificate button
       const certButtonCell = document.createElement('td');
-      certButtonCell.innerHTML = `<button onclick="generateCertificate('${team.teamID}', '${member}')">Download Certificate</button>`;
+      certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}')">Download Certificate</button>`;
       row.appendChild(certButtonCell);
 
       // Append the row to the table body
@@ -1249,6 +1249,8 @@ function displayTeamData(team) {
 }
 
 function generateCertificate(teamID, memberName) {
+    document.getElementById(memberName).innerHTML="Generating Certificate....";
+
   const { jsPDF } = window.jspdf;
   const imgUrl = 'certificate-template.png'; // Path to your certificate image
 
@@ -1297,6 +1299,8 @@ function generateCertificate(teamID, memberName) {
 
     // Save the PDF
     doc.save(`${memberName}_certificate.pdf`);
+
+    document.getElementById(memberName).innerHTML="Download Certificate";
   };
 }
 
