@@ -1,140 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Certificates</title>
-  
-  <script src="certificate.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- Include jsPDF -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Certificates</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400&display=swap" rel="stylesheet">
+    <script src="certificate.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Include jsPDF -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <style>
-    /* Base styles */
-    body {
-      font-family: 'Overpass Mono', monospace; /* Set font to Overpass Mono */
-      margin: 0;
-      padding: 20px;
-      color: #152b79;
-      text-align: center;
-      background: linear-gradient(135deg, #f7f8fa 0%, #e9ecef 100%);
-    }
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Search for Team and Generate Certificates</h1>
 
-    h1 {
-      color: black;
-      margin-bottom: 20px;
-      font-size: 2.5em;
-    }
+    <input type="text" id="teamIDInput" placeholder="Enter Team ID" />
+    <button class="searchbtn" onclick="searchTeam()">Search</button>
 
-    input[type="text"] {
-      padding: 10px;
-      border: 2px solid #152b79;
-      border-radius: 5px;
-      width: 250px;
-      font-size: 1em;
-      transition: border-color 0.3s ease;
-    }
-
-    input[type="text"]:focus {
-      border-color: #003399;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #1a73e8; /* Changed button color */
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3; /* Darker shade on hover */
-      transform: scale(1.05);
-    }
-
-    /* Table styles */
-    table {
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      border-collapse: collapse;
-      position: relative;
-      background-color: rgba(255, 255, 255, 0.8); /* White with some transparency */
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    th, td {
-      padding: 15px;
-      border: 1px solid #152b79;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-
-    th {
-      background-color: #4dd0e1; /* Light Cyan */
-      color: white;
-      position: sticky;
-      top: 0; /* Fixed header */
-      z-index: 10; /* Keep header on top */
-    }
-
-    td {
-      background-color: white;
-      color: #152b79;
-    }
-
-    td a {
-      color: #003399;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    td a:hover {
-      color: #0056b3;
-    }
-
-    /* Responsive Design */
-    @media screen and (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      input[type="text"], button {
-        width: 100%;
-        margin: 5px 0;
-      }
-
-      table {
-        font-size: 0.9em;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>Search for Team and Generate Certificates</h1>
-
-  <input type="text" id="teamIDInput" placeholder="Enter Team ID">
-  <button onclick="searchTeam()">Search</button>
-
-  <table id="teamTable" border="1">
-    <thead>
-      <tr>
-        <th>Team ID</th>
-        <th>Team Name</th>
-        <th>Leader Name</th>
-        <th>Member Name</th>
-        <th>Certificate Link</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</body>
+    <div class="table-container">
+      <table id="teamTable" border="1">
+        <thead>
+          <tr>
+            <th>Team ID</th>
+            <th>Team Name</th>
+            <th>Leader Name</th>
+            <th>Member Name</th>
+            <th>Certificate Link</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
 </html>

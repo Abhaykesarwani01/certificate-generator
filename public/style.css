@@ -1,0 +1,126 @@
+body {
+  font-family: "Overpass Mono", monospace; /* Set font to Overpass Mono */
+  margin: 0;
+  padding: 20px;
+  color: #152b79;
+  text-align: center;
+  background: rgba(6, 12, 34, 0.98);
+}
+
+h1 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 2px solid #152b79;
+  border-radius: 20px;
+  width: 250px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #3cd6d8;
+  outline: none;
+}
+
+button {
+  padding: 10px 16px;
+  background: linear-gradient(to right, #fc59b6 0%, #3cd6d8 100%);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-size 0.3s ease, transform 0.3s ease;
+  background-size: 100% 100%;
+}
+
+button:hover {
+  background-size: 150% 150%;
+  transition: background-size 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  max-width: 800px;
+  font-size: 0.9em;
+  margin: 20px auto;
+  border-collapse: collapse;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8); /* White with some transparency */
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th,
+td {
+  padding: 15px;
+  border: 1px solid #152b79;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+th {
+  background-color: #4dd0e1; /* Light Cyan */
+  color: black;
+  position: sticky;
+  top: 0; /* Fixed header */
+  z-index: 10; /* Keep header on top */
+}
+
+td {
+  background-color: white;
+  color: #152b79;
+}
+
+td a {
+  color: #003399;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+td a:hover {
+  color: #0056b3;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+  input[type="text"] {
+    width: 90%;
+    margin: 5px 0;
+  }
+  .searchbtn {
+    width: 50%;
+    margin: 5px 0;
+  }
+
+  table {
+    font-size: 0.9em;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 30px;
+}
+
+@media (max-width: 600px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  }
+}
