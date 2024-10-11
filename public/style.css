@@ -1,14 +1,14 @@
 body {
   font-family: "Overpass Mono", monospace; /* Set font to Overpass Mono */
   margin: 0;
-  padding: 20px;
+  padding: 10px;
   padding-top: 0;
   color: #152b79;
   text-align: center;
   background: rgba(6, 12, 34, 0.98);
 }
 
-/* Make the header sticky */
+/* Header */
 #header {
   position: -webkit-sticky;
   /* position: sticky; */
@@ -16,14 +16,13 @@ body {
   width: 100%; 
   z-index: 1000; 
   color: #152b79;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
 }
 
 #header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 180px;
 }
 
 #logo {
@@ -150,5 +149,9 @@ td a:hover {
   .table-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  }
+
+  #header .container {
+    padding: 10px 20px;
   }
 }
