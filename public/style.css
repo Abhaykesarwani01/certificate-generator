@@ -2,9 +2,37 @@ body {
   font-family: "Overpass Mono", monospace; /* Set font to Overpass Mono */
   margin: 0;
   padding: 20px;
+  padding-top: 0;
   color: #152b79;
   text-align: center;
   background: rgba(6, 12, 34, 0.98);
+}
+
+/* Make the header sticky */
+#header {
+  position: -webkit-sticky;
+  /* position: sticky; */
+  top: 0;
+  width: 100%; 
+  z-index: 1000; 
+  color: #152b79;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
+}
+
+#header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+#logo img {
+  max-height: 50px; 
 }
 
 h1 {
