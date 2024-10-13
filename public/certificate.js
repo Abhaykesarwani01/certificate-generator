@@ -2243,8 +2243,8 @@ function generateCertificate(teamID, memberName, teamName) {
     const xPosMemberName = (imgWidthMm - memberNameTextWidth) / 2;
 
     // Add the text
-    doc.text(teamIDText, 95, imgHeightMm - 26); // 40 mm from the bottom for Team ID
-    doc.text(memberNameText, xPosMemberName, imgHeightMm - 180); // 20 mm from the bottom for Member Name
+    doc.text(teamIDText, 60, imgHeightMm -4); // 40 mm from the bottom for Team ID
+    doc.text(memberNameText, xPosMemberName, imgHeightMm - 185 ); // 20 mm from the bottom for Member Name
 
     // Save the PDF
     doc.save(`${memberName}_certificate.pdf`);
