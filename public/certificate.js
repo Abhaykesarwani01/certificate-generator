@@ -1781,7 +1781,7 @@ let teamsData = [
     leaderName: "Shalabh Sahu",
     MembersName: [
       "Shalabh Sahu",
-      "Sumit Pandey",
+      "Ujwal Dwivedi",
       "Yashwant Kumar Giri",
       "Shuchita Das",
       "Vaishnavi Mishra",
@@ -2129,7 +2129,30 @@ let teamsData = [
       "Priyansh Saxena",
     ],
   },
-]; // This will hold the JSON data
+];
+
+const offlineTeams = [
+  "UHK03101", "UHK03068", "UHK03067", "UHK03097",
+  "UHK03072", "UHK03190", "UHK03047", "UHK03183", "UHK03205", "UHK03078",
+  "UHK03088", "UHK03071", "UHK03094", "UHK03256", "UHK03085", "UHK03084",
+  "UHK03186", "UHK03063", "UHK03018", "UHK03080", "UHK03187", "UHK03107",
+  "UHK03055", "UHK03105", "UHK03176", "UHK03041", "UHK03206", "UHK03154",
+  "UHK03210", "UHK03110", "UHK03189", "UHK03025", "UHK03038", "UHK03268",
+  "UHK03104", "UHK03155", "UHK03181", "UHK03108", "UHK03267", "UHK03058",
+  "UHK03103", "UHK03153", "UHK03013", "UHK03106", "UHK03079", "UHK03199",
+  "UHK03170", "UHK03053", "UHK03102", "UHK03264", "UHK03204", "UHK03278",
+  "UHK03257", "UHK03251", "UHK03192", "UHK03030", "UHK03207", "UHK03201",
+  "UHK03277", "UHK03270", "UHK03272", "UHK03196", "UHK03274", "UHK03208",
+  "UHK03260"
+];
+
+
+
+
+
+
+
+// This will hold the JSON data
 
 // Load the JSON file (you'll need to run this on a server to avoid CORS issues)
 // fetch('teams.json')
@@ -2154,6 +2177,8 @@ document
       searchTeam();
     }
 });
+
+
 
 function displayTeamData(team) {
   const tableBody = document.getElementById("teamTable").querySelector("tbody");
@@ -2189,7 +2214,7 @@ function displayTeamData(team) {
 
     // Add Certificate button
     const certButtonCell = document.createElement("td");
-    certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}','${team.teamName}')">Download Certificate</button>`;
+    certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}', &quot;${team.teamName}&quot;)">Download Certificate</button>`;
     row.appendChild(certButtonCell);
 
     // Append the row to the table body
@@ -2199,6 +2224,12 @@ function displayTeamData(team) {
 
 function generateCertificate(teamID, memberName, teamName) {
   document.getElementById(memberName).innerHTML = "Generating Certificate....";
+
+  // Check if the team is a winner
+  if (offlineTeams.includes(teamID)) {
+    handleOffline(teamID, memberName, teamName);
+    // return;
+  }
 
   const { jsPDF } = window.jspdf;
   const imgUrl = "certificate-template.png"; // Path to your certificate image
@@ -2248,6 +2279,62 @@ function generateCertificate(teamID, memberName, teamName) {
 
     // Save the PDF
     doc.save(`${memberName}_certificate.pdf`);
+
+    document.getElementById(memberName).innerHTML = "Download Certificate";
+  };
+}
+
+
+function handleOffline(teamID, memberName, teamName){
+  
+  const { jsPDF } = window.jspdf;
+  const imgUrl = "OFFLINE.png"; // Path to your certificate image
+
+  const img = new Image();
+  img.src = imgUrl;
+
+  img.onload = function () {
+    // Get the image dimensions in pixels
+    const imgWidthPx = img.width;
+    const imgHeightPx = img.height;
+
+    // Convert pixels to millimeters (1 px = 0.264583 mm)
+    const imgWidthMm = imgWidthPx * 0.264583;
+    const imgHeightMm = imgHeightPx * 0.264583;
+
+    // Create a new PDF with dimensions matching the image
+    const doc = new jsPDF({
+      orientation: "landscape",
+      unit: "mm",
+      compressPdf: true,
+      format: [imgWidthMm, imgHeightMm], // Set page size to the image size
+    });
+
+    // Add the image to the PDF without scaling
+    doc.addImage(img, "PNG", 0, 0, imgWidthMm, imgHeightMm);
+
+    // Set font style, size, and color
+    doc.setFont("helvetica", "Bold"); // Font: helvetica, Style: bold
+    doc.setFontSize(30); // Set font size to 24
+    doc.setTextColor(0, 0, 0); // Set text color to blue (RGB)
+
+    // Center the text horizontally
+    const teamIDText = `${teamID}`;
+    const memberNameText = `${memberName} (${teamName})`;
+
+    const teamIDTextWidth = doc.getTextWidth(teamIDText);
+    const memberNameTextWidth = doc.getTextWidth(memberNameText);
+
+    // Position the text at the center of the page
+    // const xPosTeamID = (imgWidthMm - teamIDTextWidth) / 2;
+    const xPosMemberName = (imgWidthMm - memberNameTextWidth) / 2;
+
+    // Add the text
+    // doc.text(teamIDText, 60, imgHeightMm -4); // 40 mm from the bottom for Team ID
+    doc.text(memberNameText, xPosMemberName, imgHeightMm - 185 ); // 20 mm from the bottom for Member Name
+
+    // Save the PDF
+    doc.save(`${memberName}_certificate_of_appreciation.pdf`);
 
     document.getElementById(memberName).innerHTML = "Download Certificate";
   };
