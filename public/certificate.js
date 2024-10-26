@@ -522,7 +522,7 @@ let teamsData = [
   },
   {
     teamID: "UHK03049",
-    teamName: "Hustlers Squad",
+    teamName: "Hustler's Squad",
     leaderName: "Rudraksh Gupta",
     MembersName: [
       "Rudraksh Gupta",
@@ -2189,7 +2189,7 @@ function displayTeamData(team) {
 
     // Add Certificate button
     const certButtonCell = document.createElement("td");
-    certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}','${team.teamName}')">Download Certificate</button>`;
+    certButtonCell.innerHTML = `<button id="${member}" onclick="generateCertificate('${team.teamID}', '${member}', &quot;${team.teamName}&quot;)">Download Certificate</button>`;
     row.appendChild(certButtonCell);
 
     // Append the row to the table body
