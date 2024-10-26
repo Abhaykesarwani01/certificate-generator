@@ -522,7 +522,7 @@ let teamsData = [
   },
   {
     teamID: "UHK03049",
-    teamName: "Hustler's Squad",
+    teamName: "Hustlers Squad",
     leaderName: "Rudraksh Gupta",
     MembersName: [
       "Rudraksh Gupta",
