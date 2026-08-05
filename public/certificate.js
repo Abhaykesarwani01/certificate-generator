@@ -12,6 +12,12 @@ let teamsData = [
     ],
   },
   {
+        "teamID": "UHK03278",
+        "teamName": "Team Victor",
+        "leaderName": "Abhay Kesarwani",
+        "MembersName": ["Abhay Kesarwani", "Harshit Pathak", "Shruti Srivastava"]
+    },
+  {
     teamID: "UHK03002",
     teamName: "Vratej Dwivedi",
     leaderName: "Vratej Dwivedi",
@@ -2144,7 +2150,7 @@ const offlineTeams = [
   "UHK03170", "UHK03053", "UHK03102", "UHK03264", "UHK03204", "UHK03278",
   "UHK03257", "UHK03251", "UHK03192", "UHK03030", "UHK03207", "UHK03201",
   "UHK03277", "UHK03270", "UHK03272", "UHK03196", "UHK03274", "UHK03208",
-  "UHK03260"
+  "UHK03260", "UHK03278"
 ];
 
 
